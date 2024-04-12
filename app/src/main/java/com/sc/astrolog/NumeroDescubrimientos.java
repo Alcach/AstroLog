@@ -16,6 +16,11 @@ public class NumeroDescubrimientos extends AppCompatActivity {
     ListView ObservacionesListView;
     List<Observacion> Observaciones;
     ObservacionAdapter adapter;
+    int anio;
+    int mes;
+    int dia;
+    int categoria;
+    String Nombre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +31,12 @@ public class NumeroDescubrimientos extends AppCompatActivity {
         Observaciones.add(new Observacion("aaa1", R.drawable.ic_launcher_background, 1, new Date()));
         Observaciones.add(new Observacion("aaa2", R.drawable.ic_launcher_foreground, 2, new Date()));
 
+        Intent intent = getIntent();
+        Nombre = intent.getStringExtra("nombre");
+        categoria = intent.getIntExtra("Categoria", 1);
+        anio = intent.getIntExtra("Año", 2000);
+        mes = intent.getIntExtra("Mes", 1);
+        dia = intent.getIntExtra("Dia", 1);
         // Vista del listado
         ObservacionesListView = findViewById(R.id.ListaObserva);
 

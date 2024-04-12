@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class MeterObservacionNueva extends AppCompatActivity {
@@ -22,6 +23,10 @@ public class MeterObservacionNueva extends AppCompatActivity {
     SharedPreferences preferencias;
     EditText TituloCategoria;
     String Titulo;
+    int categoria;
+    int year;
+    int month;
+    int day;
     ImageButton botonCat1;
     ImageButton botonCat2;
     ImageButton botonCat3;
@@ -57,28 +62,36 @@ public class MeterObservacionNueva extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int anio, int mes, int dia)
             {
                 Toast.makeText(MeterObservacionNueva.this, "Se ha cambiado la fecha a " + dia + "/" + (mes + 1) +"/" +anio, Toast.LENGTH_SHORT).show();
+                year = anio;
+                month = mes;
+                day = dia;
             }
         });
     }
     public void Cat1()
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 1", Toast.LENGTH_SHORT).show();
+        categoria=1;
     }
     public void Cat2()
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 2", Toast.LENGTH_SHORT).show();
+        categoria =2;
     }
     public void Cat3()
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 3", Toast.LENGTH_SHORT).show();
+        categoria =3;
     }
     public void Cat4()
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 4", Toast.LENGTH_SHORT).show();
+        categoria =4;
     }
     public void Cat5()
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 5", Toast.LENGTH_SHORT).show();
+        categoria =5;
     }
 
     public void CreameLaObservacion()
@@ -86,14 +99,23 @@ public class MeterObservacionNueva extends AppCompatActivity {
         Titulo = TituloCategoria.getText().toString();
         Intent intent = new Intent(this, NumeroDescubrimientos.class);
         intent.putExtra("nombre", Titulo);
-        guardarDat(Titulo);
+        intent.putExtra("Categoria", categoria);
+        intent.putExtra("Año", year);
+        intent.putExtra("Mes", month);
+        intent.putExtra("Dia", day);
+        guardarDat(Titulo,categoria,year,month,day);
+        Toast.makeText(MeterObservacionNueva.this, Titulo + ", " + categoria + ", " + day+"/"+(month+1)+"/"+year, Toast.LENGTH_SHORT).show();
         finish();
     }
-    void guardarDat(String Titulo)
+    void guardarDat(String Titulo, int categoria,int year, int month, int day)
     {
         //declaramos las variables y valores a guardar
         SharedPreferences.Editor editor = preferencias.edit();
         editor.putString("nombreAGuardar", Titulo);
+        editor.putInt("CategoriaAGuardar",categoria);
+        editor.putInt("AñoAGuardar",year);
+        editor.putInt("MesAGuardar",month);
+        editor.putInt("DiaAGuardar",day);
         editor.commit();
     }
     //Te da la fecha actual, por si estas en 2030 sea 2030
