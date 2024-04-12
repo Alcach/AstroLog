@@ -6,13 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class NumeroDescubrimientos extends AppCompatActivity {
     Button botonNuevaObs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.numero_descubrimientos);
         botonNuevaObs = findViewById(R.id.BotonAIrMeterObs);
         botonNuevaObs.setOnClickListener(view -> IntroducirNuevaObs());
     }

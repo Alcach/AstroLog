@@ -84,9 +84,10 @@ public class MeterObservacionNueva extends AppCompatActivity {
     public void CreameLaObservacion()
     {
         Titulo = TituloCategoria.getText().toString();
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, NumeroDescubrimientos.class);
         intent.putExtra("nombre", Titulo);
         guardarDat(Titulo);
+        finish();
     }
     void guardarDat(String Titulo)
     {
