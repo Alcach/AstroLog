@@ -20,12 +20,14 @@ public class NumeroDescubrimientos extends AppCompatActivity {
     List<Observacion> Observaciones= new ArrayList<>();
     ObservacionAdapter adapter;
     SharedPreferences preferencias;
+    SharedPreferences ListaAnterior;
     int anio;
     int mes;
     int dia;
+
+    Date fecha;
     int categoria;
     String Nombre;
-    int i = 0;
     int fotoDescubr;
     int indice;
     @Override
@@ -35,6 +37,7 @@ public class NumeroDescubrimientos extends AppCompatActivity {
         botonNuevaObs = findViewById(R.id.BotonAIrMeterObs);
         botonNuevaObs.setOnClickListener(view -> IntroducirNuevaObs());
         preferencias = getSharedPreferences("datosObs", Context.MODE_PRIVATE);
+        ListaAnterior = getSharedPreferences("ListaGuard", Context.MODE_PRIVATE);
         // Vincular la vista de cada fila a los datos
         adapter = new ObservacionAdapter(this, R.layout.activity_plantilla_lista_observacion, Observaciones);
         ObservacionesListView = findViewById(R.id.ListaObserva);
@@ -55,22 +58,22 @@ public class NumeroDescubrimientos extends AppCompatActivity {
         startActivity(intent);
         */
 
-        guardarDat(indice);
+        //guardarDat(Observaciones);
         finish();
     }
     public void nuevo()
     {
         Observaciones.add((Observaciones.size()),new Observacion(Nombre, fotoDescubr, categoria, new Date(anio,mes,dia)));
     }
-    void guardarDat(int indice2)
+    void guardarDat(String nombre, int categoria, int anio, int mes, int dia)
     {
+        for (int i = 0; i < Observaciones.size(); i++) {
+            
+        }
         //declaramos las variables y valores a guardar
-        SharedPreferences.Editor editor = preferencias.edit();
-        preferencias = getSharedPreferences("datosObs", Context.MODE_PRIVATE);
-        Intent intent = getIntent();
-        indice2 = Observaciones.size();
-
-        Toast.makeText(NumeroDescubrimientos.this, ""+indice + " " + indice2, Toast.LENGTH_SHORT).show();
+        SharedPreferences.Editor editor = ListaAnterior.edit();
+        //editor.putStringSet("ListaGuardada",Lista);
+        Toast.makeText(NumeroDescubrimientos.this, ""+indice , Toast.LENGTH_SHORT).show();
         editor.commit();
 
     }

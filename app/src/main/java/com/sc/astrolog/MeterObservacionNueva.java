@@ -42,7 +42,6 @@ public class MeterObservacionNueva extends AppCompatActivity {
         setContentView(R.layout.activity_meter_observacion_nueva);
         TituloCategoria = findViewById(R.id.NombreAIntroducir);
         botonCat1 = findViewById(R.id.Categoria1);
-
         botonCat2 = findViewById(R.id.Categoria2);
         botonCat3 = findViewById(R.id.Categoria3);
         botonCat4 = findViewById(R.id.Categoria4);

@@ -18,11 +18,11 @@ class ObservacionAdapter extends ArrayAdapter {
     int idLayoutItem;
     List<Observacion> Observacion;
 
-    public ObservacionAdapter(@NonNull Context context, int idLayoutItem, @NonNull List<Observacion> personas) {
-        super(context, idLayoutItem, personas);
+    public ObservacionAdapter(@NonNull Context context, int idLayoutItem, @NonNull List<Observacion> Observaciones) {
+        super(context, idLayoutItem, Observaciones);
         this.context = context;
         this.idLayoutItem = idLayoutItem;
-        this.Observacion = personas;
+        this.Observacion = Observaciones;
     }
 
     @NonNull
