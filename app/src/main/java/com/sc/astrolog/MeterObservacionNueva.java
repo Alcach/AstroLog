@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -41,6 +42,7 @@ public class MeterObservacionNueva extends AppCompatActivity {
         setContentView(R.layout.activity_meter_observacion_nueva);
         TituloCategoria = findViewById(R.id.NombreAIntroducir);
         botonCat1 = findViewById(R.id.Categoria1);
+
         botonCat2 = findViewById(R.id.Categoria2);
         botonCat3 = findViewById(R.id.Categoria3);
         botonCat4 = findViewById(R.id.Categoria4);
@@ -56,7 +58,7 @@ public class MeterObservacionNueva extends AppCompatActivity {
         botonCat4.setOnClickListener(view -> Cat4());
         botonCat5.setOnClickListener(view -> Cat5());
         botonCrearObs.setOnClickListener(view -> CreameLaObservacion());
-        preferencias = getSharedPreferences("datosPrestamos", Context.MODE_PRIVATE);
+        preferencias = getSharedPreferences("DatosObs", Context.MODE_PRIVATE);
         CalendarioVista.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int anio, int mes, int dia)
@@ -105,7 +107,8 @@ public class MeterObservacionNueva extends AppCompatActivity {
         intent.putExtra("Dia", day);
         guardarDat(Titulo,categoria,year,month,day);
         Toast.makeText(MeterObservacionNueva.this, Titulo + ", " + categoria + ", " + day+"/"+(month+1)+"/"+year, Toast.LENGTH_SHORT).show();
-        finish();
+        startActivity(intent);
+        //finish();
     }
     void guardarDat(String Titulo, int categoria,int year, int month, int day)
     {
@@ -117,6 +120,7 @@ public class MeterObservacionNueva extends AppCompatActivity {
         editor.putInt("MesAGuardar",month);
         editor.putInt("DiaAGuardar",day);
         editor.commit();
+
     }
     //Te da la fecha actual, por si estas en 2030 sea 2030
     public void DameFecha()
@@ -125,6 +129,6 @@ public class MeterObservacionNueva extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy", Locale.getDefault());
         Calendario.setTimeInMillis(fecha);
         String fechaSeleccionada = sdf.format(Calendario.getTime());
-        Toast.makeText(MeterObservacionNueva.this, "La fecha es: " + fechaSeleccionada, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MeterObservacionNueva.this, "La fecha es: " + fechaSeleccionada, Toast.LENGTH_SHORT).show();
     }
 }

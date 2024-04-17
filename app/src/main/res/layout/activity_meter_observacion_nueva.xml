@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MeterObservacionNueva"
-    android:background="#013677">
+    android:background="#013677"
+    tools:context=".MeterObservacionNueva">
 
     <TextView
         android:id="@+id/TituloNuevoDesubrimiento"
@@ -24,8 +24,8 @@
         android:id="@+id/NombreAIntroducir"
         android:layout_width="280dp"
         android:layout_height="48dp"
-        android:text=""
         android:hint="Introduzca Nombre"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -47,24 +47,15 @@
         app:layout_constraintVertical_bias="0.245" />
 
     <ImageButton
-        android:id="@+id/Categoria3"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.307"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageButton
         android:id="@+id/Categoria1"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:background="@drawable/abrazado_a"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintEnd_toStartOf="@+id/Categoria2"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.307"
@@ -74,6 +65,8 @@
         android:id="@+id/Categoria2"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:background="@drawable/actor_fav"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.3"
@@ -81,26 +74,41 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.307"
         tools:ignore="SpeakableTextPresentCheck" />
-
     <ImageButton
-        android:id="@+id/Categoria5"
+        android:id="@+id/Categoria3"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:background="@drawable/arbol"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.307"
         tools:ignore="SpeakableTextPresentCheck" />
-
     <ImageButton
         android:id="@+id/Categoria4"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:background="@drawable/bailando_con"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.699"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.307"
+        tools:ignore="SpeakableTextPresentCheck" />
+    <ImageButton
+        android:id="@+id/Categoria5"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/bebiendo_junto_a"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.307"

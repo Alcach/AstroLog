@@ -22,10 +22,12 @@
             android:name=".PlantillaListaObservacion"
             android:exported="false" />
         <activity
-            android:name=".MeterObservacionNueva"
+
+            android:name=".NumeroDescubrimientos"
             android:exported="false" />
         <activity
-            android:name=".NumeroDescubrimientos"
+
+            android:name=".MeterObservacionNueva"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
