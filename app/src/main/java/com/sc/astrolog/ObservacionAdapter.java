@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 class ObservacionAdapter extends ArrayAdapter {
@@ -43,11 +44,16 @@ class ObservacionAdapter extends ArrayAdapter {
         ImageView fotoImageView = convertView.findViewById(R.id.FotoPlantilla);
         fotoImageView.setImageDrawable(context.getDrawable(observacion.foto));
 
-        /*
+
         //poner la hora
-        TextView fecha =convertView.findViewById(R.id.hora);
-        fecha.setText((CharSequence) observacion.fecha);
-         */
+        TextView fechatxtview =convertView.findViewById(R.id.hora);
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
+        String fechaStr = format.format(observacion.fecha);
+
+
+        fechatxtview.setText(""+fechaStr);
+
 
         Log.i("getView", "fila: " + position + " nombre: "+ observacion.nombre + ", hora: " + observacion.fecha);
         return convertView;

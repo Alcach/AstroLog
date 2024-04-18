@@ -5,15 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlantillaListaObservacion">
+
     <TextView
         android:id="@+id/nombreTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20dp"
+        android:textColor="@color/black"
         android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Pepe" />
@@ -24,16 +27,22 @@
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/nombreTextView"
+        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
     <TextView
         android:id="@+id/hora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#B8854F"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toEndOf="@+id/nombreTextView"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Pepe"/>
+        tools:ignore="TextContrastCheck"
+        tools:text="Pepe" />
 </androidx.constraintlayout.widget.ConstraintLayout>

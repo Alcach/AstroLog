@@ -25,6 +25,7 @@
         android:layout_width="280dp"
         android:layout_height="48dp"
         android:hint="Introduzca Nombre"
+        android:maxLength="12"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
