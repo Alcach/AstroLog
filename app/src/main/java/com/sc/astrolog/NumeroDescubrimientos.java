@@ -11,7 +11,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class NumeroDescubrimientos extends AppCompatActivity {
@@ -24,12 +26,11 @@ public class NumeroDescubrimientos extends AppCompatActivity {
     int anio;
     int mes;
     int dia;
-
-    String fechaPuesta;
     int categoria;
     String Nombre;
     int fotoDescubr;
     int indice;
+    Calendar calendario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +80,7 @@ public class NumeroDescubrimientos extends AppCompatActivity {
     }
     void RevisionData()
     {
-        Toast.makeText(NumeroDescubrimientos.this, ""+ Nombre + ", "+ categoria + ", " +"("+dia+"/"+(mes + 1) +"/"+anio+") " + fechaPuesta , Toast.LENGTH_SHORT).show();
+        Toast.makeText(NumeroDescubrimientos.this, ""+ Nombre + ", "+ categoria + ", " +"("+dia+"/"+(mes + 1) +"/"+anio+") " + calendario.getTime() , Toast.LENGTH_SHORT).show();
     }
     void cargarDat()
     {
@@ -90,7 +91,6 @@ public class NumeroDescubrimientos extends AppCompatActivity {
         anio = intent.getIntExtra("Año", 2000);
         mes = intent.getIntExtra("Mes", 1);
         dia = intent.getIntExtra("Dia", 1);
-        fechaPuesta = intent.getStringExtra("Fecha");
         if(categoria==1)
         {
             fotoDescubr = R.drawable.abrazado_a;
@@ -111,8 +111,8 @@ public class NumeroDescubrimientos extends AppCompatActivity {
         {
             fotoDescubr = R.drawable.bebiendo_junto_a;
         }
-
-
-        Observaciones.add((Observaciones.size()),new Observacion(Nombre, fotoDescubr, categoria, new Date(fechaPuesta)));
+        calendario = new GregorianCalendar();
+        calendario.set(anio,mes,dia);
+        Observaciones.add((Observaciones.size()),new Observacion(Nombre, fotoDescubr, categoria, calendario.getTime()));
     }
 }

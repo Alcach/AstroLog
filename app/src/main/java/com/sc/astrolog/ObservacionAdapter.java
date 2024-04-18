@@ -52,10 +52,10 @@ class ObservacionAdapter extends ArrayAdapter {
         String fechaStr = format.format(observacion.fecha);
 
 
-        fechatxtview.setText(""+fechaStr);
+        fechatxtview.setText(fechaStr);
 
 
-        Log.i("getView", "fila: " + position + " nombre: "+ observacion.nombre + ", hora: " + observacion.fecha);
+        Log.i("getView", "fila: " + position + " nombre: "+ observacion.nombre + ", hora: " + fechaStr);
         return convertView;
     }
 }
