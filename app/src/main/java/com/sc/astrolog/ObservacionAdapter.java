@@ -43,7 +43,13 @@ class ObservacionAdapter extends ArrayAdapter {
         ImageView fotoImageView = convertView.findViewById(R.id.FotoPlantilla);
         fotoImageView.setImageDrawable(context.getDrawable(observacion.foto));
 
-        Log.i("getView", "fila: " + position + " nombre: "+ observacion.nombre);
+        /*
+        //poner la hora
+        TextView fecha =convertView.findViewById(R.id.hora);
+        fecha.setText((CharSequence) observacion.fecha);
+         */
+
+        Log.i("getView", "fila: " + position + " nombre: "+ observacion.nombre + ", hora: " + observacion.fecha);
         return convertView;
     }
 }

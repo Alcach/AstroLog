@@ -25,7 +25,7 @@ public class NumeroDescubrimientos extends AppCompatActivity {
     int mes;
     int dia;
 
-    Date fecha;
+    String fechaPuesta;
     int categoria;
     String Nombre;
     int fotoDescubr;
@@ -48,7 +48,7 @@ public class NumeroDescubrimientos extends AppCompatActivity {
 
         // Vista del listado
 
-        //ObservacionesListView.setOnItemClickListener((adapterView, view, i, l) -> );
+        ObservacionesListView.setOnItemClickListener((adapterView, view, i, l) ->RevisionData() );
 
     }
     private void IntroducirNuevaObs()
@@ -77,6 +77,10 @@ public class NumeroDescubrimientos extends AppCompatActivity {
         editor.commit();
 
     }
+    void RevisionData()
+    {
+        Toast.makeText(NumeroDescubrimientos.this, ""+ Nombre + ", "+ categoria + ", " +"("+dia+"/"+(mes + 1) +"/"+anio+") " + fechaPuesta , Toast.LENGTH_SHORT).show();
+    }
     void cargarDat()
     {
         preferencias = getSharedPreferences("datosObs", Context.MODE_PRIVATE);
@@ -86,7 +90,7 @@ public class NumeroDescubrimientos extends AppCompatActivity {
         anio = intent.getIntExtra("Año", 2000);
         mes = intent.getIntExtra("Mes", 1);
         dia = intent.getIntExtra("Dia", 1);
-
+        fechaPuesta = intent.getStringExtra("Fecha");
         if(categoria==1)
         {
             fotoDescubr = R.drawable.abrazado_a;
@@ -109,6 +113,6 @@ public class NumeroDescubrimientos extends AppCompatActivity {
         }
 
 
-        Observaciones.add((Observaciones.size()),new Observacion(Nombre, fotoDescubr, categoria, new Date(anio,mes,dia)));
+        Observaciones.add((Observaciones.size()),new Observacion(Nombre, fotoDescubr, categoria, new Date(fechaPuesta)));
     }
 }

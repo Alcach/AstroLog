@@ -36,6 +36,8 @@ public class MeterObservacionNueva extends AppCompatActivity {
     CalendarView CalendarioVista;
     Calendar Calendario;
     Button botonCrearObs;
+    long fecha;
+    String fechaSeleccionada;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +68,7 @@ public class MeterObservacionNueva extends AppCompatActivity {
                 year = anio;
                 month = mes;
                 day = dia;
+                DameFecha();
             }
         });
     }
@@ -104,12 +107,13 @@ public class MeterObservacionNueva extends AppCompatActivity {
         intent.putExtra("Año", year);
         intent.putExtra("Mes", month);
         intent.putExtra("Dia", day);
-        guardarDat(Titulo,categoria,year,month,day);
+        intent.putExtra("Fecha", fechaSeleccionada);
+        guardarDat(Titulo,categoria,year,month,day,fechaSeleccionada);
         Toast.makeText(MeterObservacionNueva.this, Titulo + ", " + categoria + ", " + day+"/"+(month+1)+"/"+year, Toast.LENGTH_SHORT).show();
         startActivity(intent);
         //finish();
     }
-    void guardarDat(String Titulo, int categoria,int year, int month, int day)
+    void guardarDat(String Titulo, int categoria,int year, int month, int day, String fecha)
     {
         //declaramos las variables y valores a guardar
         SharedPreferences.Editor editor = preferencias.edit();
@@ -118,16 +122,17 @@ public class MeterObservacionNueva extends AppCompatActivity {
         editor.putInt("AñoAGuardar",year);
         editor.putInt("MesAGuardar",month);
         editor.putInt("DiaAGuardar",day);
+        editor.putString("FechaAGuardar",fecha);
         editor.commit();
 
     }
     //Te da la fecha actual, por si estas en 2030 sea 2030
     public void DameFecha()
     {
-        long fecha = CalendarioVista.getDate();
+        fecha = CalendarioVista.getDate();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy", Locale.getDefault());
         Calendario.setTimeInMillis(fecha);
-        String fechaSeleccionada = sdf.format(Calendario.getTime());
+        fechaSeleccionada = sdf.format(Calendario.getTime());
         //Toast.makeText(MeterObservacionNueva.this, "La fecha es: " + fechaSeleccionada, Toast.LENGTH_SHORT).show();
     }
 }
