@@ -29,6 +29,8 @@ public class NumeroDescubrimientos extends AppCompatActivity {
     int anio;
     int mes;
     int dia;
+    int minuto;
+    int hora;
     int categoria;
     String Nombre;
     int fotoDescubr;
@@ -87,8 +89,10 @@ public class NumeroDescubrimientos extends AppCompatActivity {
         anio = intent.getIntExtra("Año", 2000);
         mes = intent.getIntExtra("Mes", 1);
         dia = intent.getIntExtra("Dia", 1);
+        minuto=intent.getIntExtra("minuto",1);
+        hora=intent.getIntExtra("hora",1);
         calendario = new GregorianCalendar();
-        calendario.set(anio,mes,dia);
+        calendario.set(anio,mes,dia,hora,minuto);
         if(categoria==1)
         {
             fotoDescubr = R.drawable.abrazado_a;
@@ -109,6 +113,9 @@ public class NumeroDescubrimientos extends AppCompatActivity {
         {
             fotoDescubr = R.drawable.bebiendo_junto_a;
         }
-        observacionesLista.observaciones.add(new Observacion(Nombre, fotoDescubr, categoria, calendario.getTime()));
+        if(Nombre != null)
+        {
+            observacionesLista.observaciones.add(new Observacion(Nombre, fotoDescubr, categoria, calendario.getTime()));
+        }
     }
 }

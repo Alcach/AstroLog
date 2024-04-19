@@ -124,20 +124,34 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.397" />
+        app:layout_constraintVertical_bias="0.38" />
 
     <CalendarView
         android:id="@+id/Calendario"
-        android:layout_width="288dp"
+        android:layout_width="400dp"
         android:layout_height="300dp"
         android:background="#DACF6C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.74" />
+        app:layout_constraintVertical_bias="0.837" />
+
+    <Button
+        android:id="@+id/VerLaLista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver Lista"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.807"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.98" />
 
     <Button
         android:id="@+id/VolverALaLista"
@@ -149,18 +163,36 @@
         app:layout_constraintHorizontal_bias="0.205"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.953" />
+        app:layout_constraintVertical_bias="0.98" />
 
-    <Button
-        android:id="@+id/VerLaLista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ver Lista"
+    <EditText
+        android:id="@+id/minuto"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
+        android:inputType="number"
+        android:gravity="center"
+        android:hint="minuto"
+        android:maxLength="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintHorizontal_bias="0.282"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.953" />
+        app:layout_constraintVertical_bias="0.456" />
+
+    <EditText
+        android:id="@+id/hora"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
+        android:inputType="number"
+        android:maxLength="2"
+        android:gravity="center"
+        android:hint="hora"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.634"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.456" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

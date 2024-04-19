@@ -21,11 +21,15 @@ public class MeterObservacionNueva extends AppCompatActivity {
 
     SharedPreferences preferencias;
     EditText TituloCategoria;
+    EditText TextoMin;
+    EditText TextoHora;
     String Titulo;
     int categoria;
     int year;
     int month;
     int day;
+    int hour;
+    int minute;
     ImageButton botonCat1;
     ImageButton botonCat2;
     ImageButton botonCat3;
@@ -49,6 +53,8 @@ public class MeterObservacionNueva extends AppCompatActivity {
         botonCrearObs = findViewById(R.id.VolverALaLista);
         CalendarioVista = findViewById(R.id.Calendario);
         botonVerLista = findViewById(R.id.VerLaLista);
+        TextoMin = findViewById(R.id.minuto);
+        TextoHora = findViewById(R.id.hora);
         Calendario = Calendar.getInstance();
 
         botonCat1.setOnClickListener(view -> Cat1());
@@ -99,17 +105,23 @@ public class MeterObservacionNueva extends AppCompatActivity {
     public void CreameLaObservacion()
     {
         Titulo = TituloCategoria.getText().toString();
+        String MinutoStr = TextoMin.getText().toString();
+        minute = Integer.parseInt(MinutoStr);
+        String HoraStr = TextoHora.getText().toString();
+        hour = Integer.parseInt(HoraStr);
         Intent intent = new Intent(this, NumeroDescubrimientos.class);
+        intent.putExtra("minuto",minute);
+        intent.putExtra("hora",hour);
         intent.putExtra("nombre", Titulo);
         intent.putExtra("Categoria", categoria);
         intent.putExtra("Año", year);
         intent.putExtra("Mes", month);
         intent.putExtra("Dia", day);
-        guardarDat(Titulo,categoria,year,month,day);
+        guardarDat(Titulo,categoria,year,month,day, minute, hour);
         Toast.makeText(MeterObservacionNueva.this, Titulo + ", " + categoria + ", " + day+"/"+(month+1)+"/"+year, Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
-    void guardarDat(String Titulo, int categoria,int year, int month, int day)
+    void guardarDat(String Titulo, int categoria,int year, int month, int day, int minute, int hour)
     {
         //declaramos las variables y valores a guardar
         SharedPreferences.Editor editor = preferencias.edit();
@@ -118,6 +130,8 @@ public class MeterObservacionNueva extends AppCompatActivity {
         editor.putInt("AñoAGuardar",year);
         editor.putInt("MesAGuardar",month);
         editor.putInt("DiaAGuardar",day);
+        editor.putInt("MinutoAGuardar",minute);
+        editor.putInt("HoraAGuardar",hour);
         editor.commit();
     }
     void verLista()
