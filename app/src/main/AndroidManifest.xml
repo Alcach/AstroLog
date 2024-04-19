@@ -16,18 +16,15 @@
             android:name=".ObservacionAdapter"
             android:exported="false" />
         <activity
-            android:name=".Observacion"
-            android:exported="false" />
-        <activity
-            android:name=".PlantillaListaObservacion"
+            android:name=".Clases.Observacion"
             android:exported="false" />
         <activity
 
-            android:name=".NumeroDescubrimientos"
+            android:name=".Pantallas.NumeroDescubrimientos"
             android:exported="false" />
         <activity
 
-            android:name=".MeterObservacionNueva"
+            android:name=".Pantallas.MeterObservacionNueva"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -11,10 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.sc.astrolog.Clases.Observacion;
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-class ObservacionAdapter extends ArrayAdapter {
+public class ObservacionAdapter extends ArrayAdapter {
     Context context;
     int idLayoutItem;
     List<Observacion> Observacion;
@@ -47,9 +49,9 @@ class ObservacionAdapter extends ArrayAdapter {
 
         //poner la hora
         TextView fechatxtview =convertView.findViewById(R.id.hora);
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat Format = new SimpleDateFormat("dd-MM-yyyy");
 
-        String fechaStr = format.format(observacion.fecha);
+        String fechaStr = Format.format(observacion.fecha);
 
 
         fechatxtview.setText(fechaStr);

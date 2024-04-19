@@ -1,4 +1,4 @@
-package com.sc.astrolog;
+package com.sc.astrolog.Clases;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,10 +9,10 @@ import java.util.Date;
 public class Observacion {
 
 
-    String nombre;
-    int foto;
-    int categoria;
-    Date fecha;
+    public String nombre;
+    public int foto;
+    public int categoria;
+    public Date fecha;
 
     public Observacion(String nombre, int foto, int categoria, Date fecha) {
         this.nombre = nombre;

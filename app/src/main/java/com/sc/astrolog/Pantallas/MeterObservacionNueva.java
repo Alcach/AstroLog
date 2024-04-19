@@ -1,4 +1,4 @@
-package com.sc.astrolog;
+package com.sc.astrolog.Pantallas;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,13 +11,11 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
+import com.sc.astrolog.R;
+
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 public class MeterObservacionNueva extends AppCompatActivity {
 
@@ -36,6 +34,7 @@ public class MeterObservacionNueva extends AppCompatActivity {
     CalendarView CalendarioVista;
     Calendar Calendario;
     Button botonCrearObs;
+    Button botonVerLista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +48,7 @@ public class MeterObservacionNueva extends AppCompatActivity {
         botonCat5 = findViewById(R.id.Categoria5);
         botonCrearObs = findViewById(R.id.VolverALaLista);
         CalendarioVista = findViewById(R.id.Calendario);
+        botonVerLista = findViewById(R.id.VerLaLista);
         Calendario = Calendar.getInstance();
 
         botonCat1.setOnClickListener(view -> Cat1());
@@ -57,6 +57,7 @@ public class MeterObservacionNueva extends AppCompatActivity {
         botonCat4.setOnClickListener(view -> Cat4());
         botonCat5.setOnClickListener(view -> Cat5());
         botonCrearObs.setOnClickListener(view -> CreameLaObservacion());
+        botonVerLista.setOnClickListener(view -> verLista());
         preferencias = getSharedPreferences("DatosObs", Context.MODE_PRIVATE);
         CalendarioVista.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -107,7 +108,6 @@ public class MeterObservacionNueva extends AppCompatActivity {
         guardarDat(Titulo,categoria,year,month,day);
         Toast.makeText(MeterObservacionNueva.this, Titulo + ", " + categoria + ", " + day+"/"+(month+1)+"/"+year, Toast.LENGTH_SHORT).show();
         startActivity(intent);
-        //finish();
     }
     void guardarDat(String Titulo, int categoria,int year, int month, int day)
     {
@@ -119,7 +119,10 @@ public class MeterObservacionNueva extends AppCompatActivity {
         editor.putInt("MesAGuardar",month);
         editor.putInt("DiaAGuardar",day);
         editor.commit();
-
     }
-
+    void verLista()
+    {
+        Intent intent = new Intent(this, NumeroDescubrimientos.class);
+        startActivity(intent);
+    }
 }

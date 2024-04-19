@@ -1,4 +1,4 @@
-package com.sc.astrolog;
+package com.sc.astrolog.Pantallas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,79 +10,75 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.sc.astrolog.Clases.Observacion;
+import com.sc.astrolog.Clases.ObservacionesLista;
+import com.sc.astrolog.ObservacionAdapter;
+import com.sc.astrolog.R;
+
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 public class NumeroDescubrimientos extends AppCompatActivity {
+    ObservacionesLista observacionesLista;
     Button botonNuevaObs;
     ListView ObservacionesListView;
-    List<Observacion> Observaciones= new ArrayList<>();
     ObservacionAdapter adapter;
     SharedPreferences preferencias;
-    SharedPreferences ListaAnterior;
     int anio;
     int mes;
     int dia;
     int categoria;
     String Nombre;
     int fotoDescubr;
-    int indice;
     Calendar calendario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.numero_descubrimientos);
         botonNuevaObs = findViewById(R.id.BotonAIrMeterObs);
-        botonNuevaObs.setOnClickListener(view -> IntroducirNuevaObs());
-        preferencias = getSharedPreferences("datosObs", Context.MODE_PRIVATE);
-        ListaAnterior = getSharedPreferences("ListaGuard", Context.MODE_PRIVATE);
-        // Vincular la vista de cada fila a los datos
-        adapter = new ObservacionAdapter(this, R.layout.activity_plantilla_lista_observacion, Observaciones);
         ObservacionesListView = findViewById(R.id.ListaObserva);
-        // Vincular el adapta a la vista del listado
+        CargaTabla();
+        meterNuevaObs();
+        preferencias = getSharedPreferences("datosObs", Context.MODE_PRIVATE);
+        // Vincular la vista de cada fila a los datos
+        adapter = new ObservacionAdapter(this, R.layout.activity_plantilla_lista_observacion, observacionesLista.observaciones);
         ObservacionesListView.setAdapter(adapter);
-        cargarDat();
-        //nuevo();
-
         // Vista del listado
+        botonNuevaObs.setOnClickListener(view -> IntroducirNuevaObs());
 
-        ObservacionesListView.setOnItemClickListener((adapterView, view, i, l) ->RevisionData() );
-
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Guardar conversaciones
+        guardarDat();
     }
     private void IntroducirNuevaObs()
     {
-        /*
-        Intent intent = new Intent(this, MeterObservacionNueva.class);
-        startActivity(intent);
-        */
-
-        //guardarDat(Observaciones);
+        guardarDat();
         finish();
     }
-    public void nuevo()
+    void CargaTabla()
     {
-        Observaciones.add((Observaciones.size()),new Observacion(Nombre, fotoDescubr, categoria, new Date(anio,mes,dia)));
-    }
-    void guardarDat(String nombre, int categoria, int anio, int mes, int dia)
-    {
-        for (int i = 0; i < Observaciones.size(); i++) {
-            
+        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String json = preferences.getString("Observaciones", null);
+        if (json == null) {
+            observacionesLista = new ObservacionesLista();
+        } else {
+            observacionesLista = ObservacionesLista.convertirAJava(json);
         }
-        //declaramos las variables y valores a guardar
-        SharedPreferences.Editor editor = ListaAnterior.edit();
-        //editor.putStringSet("ListaGuardada",Lista);
-        Toast.makeText(NumeroDescubrimientos.this, ""+indice , Toast.LENGTH_SHORT).show();
-        editor.commit();
-
     }
-    void RevisionData()
+    void guardarDat()
     {
-        Toast.makeText(NumeroDescubrimientos.this, ""+ Nombre + ", "+ categoria + ", " +"("+dia+"/"+(mes + 1) +"/"+anio+") " + calendario.getTime() , Toast.LENGTH_SHORT).show();
+        SharedPreferences preferences = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String json = observacionesLista.convertirAJson();
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("Observaciones", json);
+        editor.commit();
     }
-    void cargarDat()
+    void meterNuevaObs()
     {
         preferencias = getSharedPreferences("datosObs", Context.MODE_PRIVATE);
         Intent intent = getIntent();
@@ -91,6 +87,8 @@ public class NumeroDescubrimientos extends AppCompatActivity {
         anio = intent.getIntExtra("Año", 2000);
         mes = intent.getIntExtra("Mes", 1);
         dia = intent.getIntExtra("Dia", 1);
+        calendario = new GregorianCalendar();
+        calendario.set(anio,mes,dia);
         if(categoria==1)
         {
             fotoDescubr = R.drawable.abrazado_a;
@@ -111,8 +109,6 @@ public class NumeroDescubrimientos extends AppCompatActivity {
         {
             fotoDescubr = R.drawable.bebiendo_junto_a;
         }
-        calendario = new GregorianCalendar();
-        calendario.set(anio,mes,dia);
-        Observaciones.add((Observaciones.size()),new Observacion(Nombre, fotoDescubr, categoria, calendario.getTime()));
+        observacionesLista.observaciones.add(new Observacion(Nombre, fotoDescubr, categoria, calendario.getTime()));
     }
 }
