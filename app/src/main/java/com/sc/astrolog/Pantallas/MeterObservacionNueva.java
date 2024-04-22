@@ -35,6 +35,9 @@ public class MeterObservacionNueva extends AppCompatActivity {
     ImageButton botonCat3;
     ImageButton botonCat4;
     ImageButton botonCat5;
+    ImageButton botonCat6;
+    ImageButton botonCat7;
+    ImageButton botonCat8;
     CalendarView CalendarioVista;
     Calendar Calendario;
     Button botonCrearObs;
@@ -50,6 +53,9 @@ public class MeterObservacionNueva extends AppCompatActivity {
         botonCat3 = findViewById(R.id.Categoria3);
         botonCat4 = findViewById(R.id.Categoria4);
         botonCat5 = findViewById(R.id.Categoria5);
+        botonCat6 = findViewById(R.id.Categoria6);
+        botonCat7 = findViewById(R.id.Categoria7);
+        botonCat8 = findViewById(R.id.Categoria8);
         botonCrearObs = findViewById(R.id.VolverALaLista);
         CalendarioVista = findViewById(R.id.Calendario);
         botonVerLista = findViewById(R.id.VerLaLista);
@@ -62,6 +68,9 @@ public class MeterObservacionNueva extends AppCompatActivity {
         botonCat3.setOnClickListener(view -> Cat3());
         botonCat4.setOnClickListener(view -> Cat4());
         botonCat5.setOnClickListener(view -> Cat5());
+        botonCat6.setOnClickListener(view -> Cat6());
+        botonCat7.setOnClickListener(view -> Cat7());
+        botonCat8.setOnClickListener(view -> Cat8());
         botonCrearObs.setOnClickListener(view -> CreameLaObservacion());
         botonVerLista.setOnClickListener(view -> verLista());
         preferencias = getSharedPreferences("DatosObs", Context.MODE_PRIVATE);
@@ -100,6 +109,21 @@ public class MeterObservacionNueva extends AppCompatActivity {
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 5", Toast.LENGTH_SHORT).show();
         categoria =5;
+    }
+    public void Cat6()
+    {
+        Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 6", Toast.LENGTH_SHORT).show();
+        categoria =6;
+    }
+    public void Cat7()
+    {
+        Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 7", Toast.LENGTH_SHORT).show();
+        categoria =7;
+    }
+    public void Cat8()
+    {
+        Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 8", Toast.LENGTH_SHORT).show();
+        categoria =8;
     }
 
     public void CreameLaObservacion()
