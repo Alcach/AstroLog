@@ -8,17 +8,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.sc.astrolog.Clases.Observacion;
 import com.sc.astrolog.Clases.ObservacionesLista;
 import com.sc.astrolog.ObservacionAdapter;
 import com.sc.astrolog.R;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 public class NumeroDescubrimientos extends AppCompatActivity {
     ObservacionesLista observacionesLista;
