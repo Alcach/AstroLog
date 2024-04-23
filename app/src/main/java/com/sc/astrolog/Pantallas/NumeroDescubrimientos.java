@@ -92,35 +92,35 @@ public class NumeroDescubrimientos extends AppCompatActivity {
         calendario.set(anio,mes,dia,hora,minuto);
         if(categoria==1)
         {
-            fotoDescubr = R.drawable.Sol;
+            fotoDescubr = R.drawable.sol;
         }
         if(categoria==2)
         {
-            fotoDescubr = R.drawable.Luna;
+            fotoDescubr = R.drawable.luna;
         }
         if(categoria==3)
         {
-            fotoDescubr = R.drawable.Planeta;
+            fotoDescubr = R.drawable.planeta;
         }
         if(categoria==4)
         {
-            fotoDescubr = R.drawable.Satelite;
+            fotoDescubr = R.drawable.satelite;
         }
         if(categoria==5)
         {
-            fotoDescubr = R.drawable.Galaxia;
+            fotoDescubr = R.drawable.galaxia;
         }
         if(categoria==6)
         {
-            fotoDescubr = R.drawable.Nube;
+            fotoDescubr = R.drawable.nube;
         }
         if(categoria==7)
         {
-            fotoDescubr = R.drawable.Estrella;
+            fotoDescubr = R.drawable.estrella;
         }
         if(categoria==8)
         {
-            fotoDescubr = R.drawable.Estrellas;
+            fotoDescubr = R.drawable.estrellas;
         }
         if(Nombre != null)
         {

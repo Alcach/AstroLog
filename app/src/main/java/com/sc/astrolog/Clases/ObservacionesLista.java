@@ -13,7 +13,7 @@ public class ObservacionesLista {
 
     public ObservacionesLista() {
         observaciones = new ArrayList<>();
-        observaciones.add(new Observacion("nombre1",R.drawable.abrazado_a,1, new Date()));
+
         Log.i("prueba: ",observaciones.toString());
     }
 
