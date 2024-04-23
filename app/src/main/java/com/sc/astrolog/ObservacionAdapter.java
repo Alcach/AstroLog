@@ -49,7 +49,7 @@ public class ObservacionAdapter extends ArrayAdapter {
 
         //poner la hora
         TextView fechatxtview =convertView.findViewById(R.id.hora);
-        SimpleDateFormat Format = new SimpleDateFormat("mm:HH   dd-MM-yyyy");
+        SimpleDateFormat Format = new SimpleDateFormat("HH:mm   dd-MM-yyyy");
 
         String fechaStr = Format.format(observacion.fecha);
 

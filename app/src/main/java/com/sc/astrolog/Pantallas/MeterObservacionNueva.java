@@ -62,7 +62,7 @@ public class MeterObservacionNueva extends AppCompatActivity {
         TextoMin = findViewById(R.id.minuto);
         TextoHora = findViewById(R.id.hora);
         Calendario = Calendar.getInstance();
-
+        //al pulsar los botones, pone una categoria(el boton 1 la categoria 1, etc...)
         botonCat1.setOnClickListener(view -> Cat1());
         botonCat2.setOnClickListener(view -> Cat2());
         botonCat3.setOnClickListener(view -> Cat3());
@@ -71,13 +71,16 @@ public class MeterObservacionNueva extends AppCompatActivity {
         botonCat6.setOnClickListener(view -> Cat6());
         botonCat7.setOnClickListener(view -> Cat7());
         botonCat8.setOnClickListener(view -> Cat8());
+        //LLeva los datos a la lista y los añade al final
         botonCrearObs.setOnClickListener(view -> CreameLaObservacion());
+        //Si solo se quiere ver los datos de la tabla, te lleva a la escena sin añadir nada
         botonVerLista.setOnClickListener(view -> verLista());
         preferencias = getSharedPreferences("DatosObs", Context.MODE_PRIVATE);
         CalendarioVista.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int anio, int mes, int dia)
             {
+                //un toast que te dice que fecha has puesto con el calendario
                 Toast.makeText(MeterObservacionNueva.this, "Se ha cambiado la fecha a " + dia + "/" + (mes + 1) +"/" +anio, Toast.LENGTH_SHORT).show();
                 year = anio;
                 month = mes;
@@ -128,6 +131,7 @@ public class MeterObservacionNueva extends AppCompatActivity {
 
     public void CreameLaObservacion()
     {
+        //guarda los datos y los lleva a la escena de la lista
         Titulo = TituloCategoria.getText().toString();
         String MinutoStr = TextoMin.getText().toString();
         minute = Integer.parseInt(MinutoStr);
