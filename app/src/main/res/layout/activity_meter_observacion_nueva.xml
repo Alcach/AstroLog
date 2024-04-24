@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#013677"
+    android:background="@drawable/fondopant"
+
     tools:context=".Pantallas.MeterObservacionNueva">
 
     <TextView
@@ -26,8 +27,9 @@
         android:layout_width="280dp"
         android:layout_height="48dp"
         android:hint="Introduzca Nombre"
+        android:textColor="@color/black"
+        android:background="#9BC1EF"
         android:maxLength="12"
-        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -175,6 +177,40 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.389" />
 
+    <EditText
+        android:id="@+id/minuto"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
+        android:inputType="number"
+        android:gravity="center"
+        android:hint="minuto"
+        android:maxLength="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.684"
+        android:background="#9BC1EF"
+        android:textColor="@color/black"
+        app:layout_constraintVertical_bias="0.456"/>
+
+    <EditText
+        android:id="@+id/hora"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:hint="hora"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.282"
+        android:background="#9BC1EF"
+        app:layout_constraintVertical_bias="0.456"
+        />
     <CalendarView
         android:id="@+id/Calendario"
         android:layout_width="400dp"
@@ -211,37 +247,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.98" />
 
-    <EditText
-        android:id="@+id/minuto"
-        android:layout_width="65dp"
-        android:layout_height="50dp"
-        android:inputType="number"
-        android:gravity="center"
-        android:hint="minuto"
-        android:maxLength="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.684"
-
-        app:layout_constraintVertical_bias="0.456"/>
-
-    <EditText
-        android:id="@+id/hora"
-        android:layout_width="65dp"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:hint="hora"
-        android:inputType="number"
-        android:maxLength="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.282"
-
-        app:layout_constraintVertical_bias="0.456"
-         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

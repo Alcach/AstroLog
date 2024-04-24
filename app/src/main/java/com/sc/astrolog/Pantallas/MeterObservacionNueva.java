@@ -88,41 +88,49 @@ public class MeterObservacionNueva extends AppCompatActivity {
             }
         });
     }
+    //te pone la categoria 1
     public void Cat1()
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 1", Toast.LENGTH_SHORT).show();
         categoria =1;
     }
+    //te pone la categoria 2
     public void Cat2()
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 2", Toast.LENGTH_SHORT).show();
         categoria =2;
     }
+    //te pone la categoria 3
     public void Cat3()
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 3", Toast.LENGTH_SHORT).show();
         categoria =3;
     }
+    //te pone la categoria 4
     public void Cat4()
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 4", Toast.LENGTH_SHORT).show();
         categoria =4;
     }
+    //te pone la categoria 5
     public void Cat5()
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 5", Toast.LENGTH_SHORT).show();
         categoria =5;
     }
+    //te pone la categoria 6
     public void Cat6()
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 6", Toast.LENGTH_SHORT).show();
         categoria =6;
     }
+    //te pone la categoria 7
     public void Cat7()
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 7", Toast.LENGTH_SHORT).show();
         categoria =7;
     }
+    //te pone la categoria 8
     public void Cat8()
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 8", Toast.LENGTH_SHORT).show();
@@ -164,7 +172,6 @@ public class MeterObservacionNueva extends AppCompatActivity {
         //Si ha puesto nombre, categoria, fecha, hora y minutos, crea la nueva observacion y te lleva a la otra pantalla
         if(!Titulo.isEmpty()&& Categoria != 0 && Minute !=0 && Hour !=0 && Day !=0 && Month !=0 && Year !=0)
         {
-
             Intent intent = new Intent(this, NumeroDescubrimientos.class);
             intent.putExtra("minuto",Minute);
             intent.putExtra("hora", Hour);
@@ -212,6 +219,7 @@ public class MeterObservacionNueva extends AppCompatActivity {
         editor.putInt("HoraAGuardar",hour);
         editor.commit();
     }
+    //Te lleva a ver la lista
     void verLista()
     {
         Intent intent = new Intent(this, NumeroDescubrimientos.class);
