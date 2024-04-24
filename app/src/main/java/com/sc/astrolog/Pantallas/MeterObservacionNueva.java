@@ -23,13 +23,13 @@ public class MeterObservacionNueva extends AppCompatActivity {
     EditText TituloCategoria;
     EditText TextoMin;
     EditText TextoHora;
-    String Titulo;
-    int categoria;
-    int year;
-    int month;
-    int day;
-    int hour;
-    int minute;
+    String titulo;
+    int categoria =0;
+    int year =0;
+    int month =0;
+    int day =0;
+    int hour =0;
+    int minute=0;
     ImageButton botonCat1;
     ImageButton botonCat2;
     ImageButton botonCat3;
@@ -91,7 +91,7 @@ public class MeterObservacionNueva extends AppCompatActivity {
     public void Cat1()
     {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 1", Toast.LENGTH_SHORT).show();
-        categoria=1;
+        categoria =1;
     }
     public void Cat2()
     {
@@ -128,26 +128,76 @@ public class MeterObservacionNueva extends AppCompatActivity {
         Toast.makeText(MeterObservacionNueva.this, "Has puesto categoría 8", Toast.LENGTH_SHORT).show();
         categoria =8;
     }
-
+    //guarda los datos y los lleva a la escena de la lista
     public void CreameLaObservacion()
     {
-        //guarda los datos y los lleva a la escena de la lista
-        Titulo = TituloCategoria.getText().toString();
+        //Creamos nuevas variables para revisar que no se haya puesto datos null(por ejemplo que no hay nombre)
+        titulo = TituloCategoria.getText().toString();
+        String Titulo = titulo;
+        int Categoria =categoria;
+
+        int Day = day;
+        int Month = month;
+        int Year = year;
+        int Minute;
+        int Hour;
         String MinutoStr = TextoMin.getText().toString();
-        minute = Integer.parseInt(MinutoStr);
         String HoraStr = TextoHora.getText().toString();
-        hour = Integer.parseInt(HoraStr);
-        Intent intent = new Intent(this, NumeroDescubrimientos.class);
-        intent.putExtra("minuto",minute);
-        intent.putExtra("hora",hour);
-        intent.putExtra("nombre", Titulo);
-        intent.putExtra("Categoria", categoria);
-        intent.putExtra("Año", year);
-        intent.putExtra("Mes", month);
-        intent.putExtra("Dia", day);
-        guardarDat(Titulo,categoria,year,month,day, minute, hour);
-        Toast.makeText(MeterObservacionNueva.this, Titulo + ", " + categoria + ", " + day+"/"+(month+1)+"/"+year, Toast.LENGTH_SHORT).show();
-        startActivity(intent);
+        //Si no ha metido los minutos
+        if(MinutoStr.isEmpty() ) {
+           Minute=0;
+
+        }
+        else {
+            minute = Integer.parseInt(MinutoStr);
+            Minute = minute;
+        }
+        //Si no ha metido la hora
+        if(HoraStr.isEmpty())
+        {
+            Hour=0;
+        }
+        else {
+            hour = Integer.parseInt(HoraStr);
+            Hour = hour;
+        }
+        //Si ha puesto nombre, categoria, fecha, hora y minutos, crea la nueva observacion y te lleva a la otra pantalla
+        if(!Titulo.isEmpty()&& Categoria != 0 && Minute !=0 && Hour !=0 && Day !=0 && Month !=0 && Year !=0)
+        {
+
+            Intent intent = new Intent(this, NumeroDescubrimientos.class);
+            intent.putExtra("minuto",Minute);
+            intent.putExtra("hora", Hour);
+            intent.putExtra("nombre", Titulo);
+            intent.putExtra("Categoria", Categoria);
+            intent.putExtra("Año", Year);
+            intent.putExtra("Mes", Month);
+            intent.putExtra("Dia", Day);
+            guardarDat(Titulo, Categoria, Year, Month, Day, Minute, Hour);
+            Toast.makeText(MeterObservacionNueva.this, Titulo + ", " + Categoria + ", " + Day +"/"+(Month +1)+"/"+ Year, Toast.LENGTH_SHORT).show();
+            startActivity(intent);
+        }
+        //Ponemos un toast dependiendo de que falte
+        else if (Titulo.isEmpty())
+        {
+            Toast.makeText(MeterObservacionNueva.this, "Falta Titulo", Toast.LENGTH_SHORT).show();
+        }
+        else if(Categoria == 0)
+        {
+            Toast.makeText(MeterObservacionNueva.this, "Falta Categoria", Toast.LENGTH_SHORT).show();
+        }
+        else if(Minute == 0)
+        {
+            Toast.makeText(MeterObservacionNueva.this, "Faltan Minutos", Toast.LENGTH_SHORT).show();
+        }
+        else if(Hour == 0)
+        {
+            Toast.makeText(MeterObservacionNueva.this, "Falta hora", Toast.LENGTH_SHORT).show();
+        }
+        else if(Day == 0 || Month ==0 || Year ==0)
+        {
+            Toast.makeText(MeterObservacionNueva.this, "Falta fecha", Toast.LENGTH_SHORT).show();
+        }
     }
     void guardarDat(String Titulo, int categoria,int year, int month, int day, int minute, int hour)
     {
