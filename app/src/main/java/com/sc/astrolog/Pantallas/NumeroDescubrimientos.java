@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.sc.astrolog.Clases.Observacion;
 import com.sc.astrolog.Clases.ObservacionesLista;
-import com.sc.astrolog.ObservacionAdapter;
+import com.sc.astrolog.Adaptador.ObservacionAdapter;
 import com.sc.astrolog.R;
 
 import java.util.Calendar;

@@ -1,4 +1,4 @@
-package com.sc.astrolog;
+package com.sc.astrolog.Adaptador;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.sc.astrolog.Clases.Observacion;
+import com.sc.astrolog.R;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
